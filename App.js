@@ -1,13 +1,15 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import Drawer from "./src/routes/DrawerNavigator";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Drawer />
-    </NavigationContainer>
+    <>
+      <StatusBar backgroundColor={"black"} barStyle="default" hidden={false} />
+      <NavigationContainer>
+        <Drawer />
+      </NavigationContainer>
+    </>
   );
 }
 

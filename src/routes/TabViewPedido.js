@@ -1,147 +1,22 @@
 import * as React from "react";
 import { View, useWindowDimensions, Text } from "react-native";
 import { TabView, TabBar, SceneMap } from "react-native-tab-view";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
-import { FontAwesome5, Entypo } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
+import Home from "../pages/Home";
+import Cliente from "../pages/Cliente";
+import FirstRoute from "../pages/TabView/Pedidos";
+import SecondRoute from "../pages/TabView/Pedidos";
+import { Badge } from "react-native-paper";
 
-const FirstRoute = () => (
-  <View style={{ flex: 1, backgroundColor: "#F0EFF4", padding: 10 }}>
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "center",
-        marginBottom: 10,
-      }}
-    >
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          marginRight: 10,
-        }}
-      >
-        <Entypo name="warning" size={10} color="#F5C21A" />
-        <Paragraph style={{ color: "#a5a4a9", fontSize: 12, marginLeft: 10 }}>
-          Em orçamento
-        </Paragraph>
-      </View>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          marginRight: 10,
-        }}
-      >
-        <FontAwesome name="circle" size={10} color="#23D084" />
-        <Paragraph style={{ color: "#a5a4a9", fontSize: 12, marginLeft: 10 }}>
-          Concluido
-        </Paragraph>
-      </View>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          marginRight: 10,
-        }}
-      >
-        <FontAwesome5 name="square-full" size={10} color="#FF6C01" />
-        <Paragraph style={{ color: "#a5a4a9", fontSize: 12, marginLeft: 10 }}>
-          Fatuarado
-        </Paragraph>
-      </View>
-    </View>
-    <Paragraph style={{ marginBottom: 10, color: "#a5a4a9" }}>
-      Quinta 14 de junho de 2022
-    </Paragraph>
-
-    <Card>
-      <Card.Content style={{ paddingTop: 5 }}>
-        <Card.Content
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            paddingHorizontal: 0,
-            paddingTop: 0,
-            paddingBottom: 5,
-            borderBottomColor: "#F3F3F3",
-            borderBottomWidth: 1,
-          }}
-        >
-          <FontAwesome5 name="check-double" size={15} color="#158cdc" />
-          <Title style={{ fontSize: 16, marginLeft: 5, color: "#158cdc" }}>
-            Pedido #1
-          </Title>
-        </Card.Content>
-        <Card.Content
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            paddingHorizontal: 0,
-            paddingTop: 10,
-          }}
-        >
-          <Entypo name="home" size={15} color="#A8A8A8" />
-          <Paragraph style={{ marginLeft: 5, color: "#A8A8A8" }}>
-            Supermercado de Bairro [exemplo]
-          </Paragraph>
-        </Card.Content>
-        <Card.Content
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            paddingHorizontal: 0,
-          }}
-        >
-          <Entypo name="briefcase" size={15} color="#A8A8A8" />
-          <Paragraph style={{ marginLeft: 5, color: "#A8A8A8" }}>
-            Card content
-          </Paragraph>
-        </Card.Content>
-        <Card.Content
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            paddingHorizontal: 0,
-            paddingBottom: 10,
-            borderBottomColor: "#F3F3F3",
-            borderBottomWidth: 1,
-          }}
-        >
-          <FontAwesome5 name="pager" size={15} color="#A8A8A8" />
-          <Paragraph style={{ marginLeft: 5, color: "#A8A8A8" }}>
-            Cartão
-          </Paragraph>
-        </Card.Content>
-        <Card.Content
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            paddingHorizontal: 0,
-            paddingTop: 10,
-          }}
-        >
-          <MaterialIcons name="monetization-on" size={16} color="#23D084" />
-          <Paragraph style={{ marginLeft: 5 }}>R$ 97,73</Paragraph>
-        </Card.Content>
-      </Card.Content>
-    </Card>
-  </View>
-);
-
-const SecondRoute = () => (
-  <View style={{ flex: 1, backgroundColor: "#F0EFF4" }} />
-);
-
-const renderScene = SceneMap({
-  first: FirstRoute,
-  second: SecondRoute,
-});
-
+const renderScene = ({ route }) => {
+  switch (route.key) {
+    case "first":
+      return <FirstRoute />;
+    case "second":
+      return <SecondRoute />;
+    default:
+      return null;
+  }
+};
 export default function TabViewPedido() {
   const layout = useWindowDimensions();
 
@@ -151,6 +26,43 @@ export default function TabViewPedido() {
     { key: "second", title: "NÃO ENVIADOS" },
   ]);
 
+  const getTabBarIcon = (props) => {
+    const { route } = props;
+
+    if (route.key === "first") {
+      return (
+        <Text
+          style={{
+            color: "black",
+            marginVertical: 10,
+            flexDirection: "row",
+          }}
+        >
+          {route.title}
+        </Text>
+      );
+    } else {
+      return (
+        <View
+          style={{
+            flexDirection: "row",
+          }}
+        >
+          <Text
+            style={{
+              color: "black",
+              marginVertical: 10,
+              marginRight: 5,
+              flexDirection: "row",
+            }}
+          >
+            {route.title}
+          </Text>
+          <Badge style={{ flexDirection: "row", marginVertical: 10 }}>3</Badge>
+        </View>
+      );
+    }
+  };
   return (
     <TabView
       navigationState={{ index, routes }}
@@ -162,9 +74,7 @@ export default function TabViewPedido() {
         <TabBar
           {...props}
           style={{ backgroundColor: "#fff" }}
-          renderLabel={({ route, color }) => (
-            <Text style={{ color: "black", margin: 8 }}>{route.title}</Text>
-          )}
+          renderLabel={(props) => getTabBarIcon(props)}
           indicatorStyle={{ backgroundColor: "#000", height: 2.5 }}
         />
       )} // <-- add this line
