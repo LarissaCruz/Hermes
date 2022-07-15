@@ -1,10 +1,11 @@
 import * as React from "react";
 import { View, Text } from "react-native";
+import TabViewPedido from "../../src/routes/TabViewPedido";
 
 export default function Pedido() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Feed Screen</Text>
+    <View style={{ flex: 1 }}>
+      <TabViewPedido />
     </View>
   );
 }
