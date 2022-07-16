@@ -1,13 +1,13 @@
 import { SafeAreaView, StyleSheet, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import Drawer from "./src/routes/DrawerNavigator";
+import StackNavigator from "./src/routes/StackNavigator";
 
 export default function App() {
   return (
     <>
       <StatusBar backgroundColor={"black"} barStyle="default" hidden={false} />
       <NavigationContainer>
-        <Drawer />
+        <StackNavigator />
       </NavigationContainer>
     </>
   );
