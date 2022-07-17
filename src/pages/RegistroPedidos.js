@@ -7,7 +7,7 @@ import ButtonNavigation from "../components/Button/ButtonNavigation";
 import Button from "../components/Button";
 import ContainerSection from "../components/ContainerSection";
 
-export default function RegistroPedidos() {
+export default function RegistroPedidos({ navigation }) {
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#EFEEF3" }}>
       <ContainerSection>
@@ -48,10 +48,14 @@ export default function RegistroPedidos() {
         <ButtonNavigation label={"Selecione o cliente"}>
           <FontAwesome5 name="building" size={24} color="black" />
         </ButtonNavigation>
-        <Button label={"ADICIONAR PRODUTOS"} />
+        <Button
+          label={"ADICIONAR PRODUTOS"}
+          onPress={() => navigation.navigate("Catálogo")}
+        />
         <Button
           label={"DEFINIR DESCONTO E ACRÉCIMOS"}
           textStyle={{ color: "#9999" }}
+          onPress={() => navigation.navigate("Catálogo")}
           styles={{
             backgroundColor: "#fff",
             borderColor: "#9999",
