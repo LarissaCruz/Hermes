@@ -7,7 +7,8 @@ import { FontAwesome } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Octicons } from "@expo/vector-icons";
 
-export default function Pedido() {
+export default function FirstRoute({ navigation }) {
+  console.log("navigation", navigation);
   return (
     <View style={{ flex: 1, backgroundColor: "#F0EFF4", padding: 10 }}>
       <View
@@ -170,6 +171,7 @@ export default function Pedido() {
             shadowRadius: 10,
             elevation: 3,
           }}
+          onPress={() => navigation.navigate("Orçamento")}
         >
           <Octicons name="plus" size={20} color="#fff" />
         </TouchableOpacity>

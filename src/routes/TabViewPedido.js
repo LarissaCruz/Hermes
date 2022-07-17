@@ -3,21 +3,11 @@ import { View, useWindowDimensions, Text } from "react-native";
 import { TabView, TabBar, SceneMap } from "react-native-tab-view";
 import Home from "../pages/Home";
 import Cliente from "../pages/Cliente";
-import FirstRoute from "../pages/TabView/Pedidos";
-import SecondRoute from "../pages/TabView/Pedidos";
+import FirstRoute from "../pages/TabView/FirstRoute";
+import SecondRoute from "../pages/TabView/SecondRoute";
 import { Badge } from "react-native-paper";
 
-const renderScene = ({ route }) => {
-  switch (route.key) {
-    case "first":
-      return <FirstRoute />;
-    case "second":
-      return <SecondRoute />;
-    default:
-      return null;
-  }
-};
-export default function TabViewPedido() {
+export default function TabViewPedido({ navigation }) {
   const layout = useWindowDimensions();
 
   const [index, setIndex] = React.useState(0);
@@ -26,6 +16,17 @@ export default function TabViewPedido() {
     { key: "second", title: "NÃO ENVIADOS" },
   ]);
 
+  const renderScene = ({ route }) => {
+    console.log("ttttttt22", navigation);
+    switch (route.key) {
+      case "first":
+        return <FirstRoute navigation={navigation} />;
+      case "second":
+        return <SecondRoute navigation={navigation} />;
+      default:
+        return null;
+    }
+  };
   const getTabBarIcon = (props) => {
     const { route } = props;
 

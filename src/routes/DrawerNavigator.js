@@ -47,7 +47,8 @@ const CustomDrawer = (props) => {
     </DrawerContentScrollView>
   );
 };
-export default function DrawerNavigator() {
+export default function DrawerNavigator(props) {
+  console.log("props", props);
   return (
     <Drawer.Navigator
       useLegacyImplementation
