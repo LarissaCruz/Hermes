@@ -1,47 +1,17 @@
 import * as React from "react";
 import { ScrollView, View, Text, TouchableOpacity } from "react-native";
-import TabViewPedido from "../../src/routes/TabViewPedido";
 import TextInput from "../components/TextInput";
-import { MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 import ButtonNavigation from "../components/Button/ButtonNavigation";
 import Button from "../components/Button";
 import ContainerSection from "../components/ContainerSection";
+import Chip from "../components/Chip";
 
 export default function RegistroPedidos({ navigation }) {
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#EFEEF3" }}>
       <ContainerSection>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            marginRight: 10,
-            marginTop: 15,
-            marginBottom: 10,
-          }}
-        >
-          <View
-            style={{
-              backgroundColor: "#EED24F",
-              paddingVertical: 5,
-              width: 90,
-              borderColor: "#EADE96",
-              borderWidth: 1,
-              borderRadius: 10,
-            }}
-          >
-            <Text
-              style={{
-                color: "#a48006",
-                fontSize: 11,
-                textAlign: "center",
-                fontWeight: "bold",
-              }}
-            >
-              Em orçamento
-            </Text>
-          </View>
-        </View>
+        <Chip />
         <ButtonNavigation label={"Selecione o cliente"}>
           <FontAwesome5 name="store-alt" size={18} color="black" />
         </ButtonNavigation>

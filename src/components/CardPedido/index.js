@@ -1,69 +1,15 @@
 import * as React from "react";
-import { View, Text, Touchable } from "react-native";
-import { Divider, Card, Title, Paragraph } from "react-native-paper";
-import { FontAwesome5, Entypo } from "@expo/vector-icons";
+import { TouchableOpacity, View, Text } from "react-native";
+import { FontAwesome5, FontAwesome, Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Octicons } from "@expo/vector-icons";
+import { Divider, Card, Title, Paragraph } from "react-native-paper";
 
-export default function FirstRoute({ navigation }) {
-  console.log("navigation", navigation);
+export default function CardPedido({}) {
   return (
-    <View style={{ flex: 1, backgroundColor: "#F0EFF4", padding: 10 }}>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          marginBottom: 10,
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            marginRight: 10,
-          }}
-        >
-          <Entypo name="warning" size={10} color="#F5C21A" />
-          <Paragraph style={{ color: "#a5a4a9", fontSize: 12, marginLeft: 10 }}>
-            Em orçamento
-          </Paragraph>
-        </View>
-
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            marginRight: 10,
-          }}
-        >
-          <FontAwesome name="circle" size={10} color="#23D084" />
-          <Paragraph style={{ color: "#a5a4a9", fontSize: 12, marginLeft: 10 }}>
-            Concluido
-          </Paragraph>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            marginRight: 10,
-          }}
-        >
-          <FontAwesome5 name="square-full" size={10} color="#FF6C01" />
-          <Paragraph style={{ color: "#a5a4a9", fontSize: 12, marginLeft: 10 }}>
-            Fatuarado
-          </Paragraph>
-        </View>
-      </View>
-      <Divider />
+    <>
       <Paragraph style={{ marginVertical: 15, color: "#a5a4a9" }}>
         Quinta 14 de junho de 2022
       </Paragraph>
-
       <Card style={{ paddingHorizontal: 0 }}>
         <Card.Content style={{ paddingTop: 5, paddingHorizontal: 0 }}>
           <Card.Content
@@ -149,33 +95,6 @@ export default function FirstRoute({ navigation }) {
           </Card.Content>
         </Card.Content>
       </Card>
-      <View
-        style={{
-          position: "absolute",
-          bottom: 20,
-          right: 10,
-          alignItems: "center",
-        }}
-      >
-        <TouchableOpacity
-          style={{
-            width: 55,
-            height: 55,
-            backgroundColor: "#000",
-            borderRadius: 50,
-            justifyContent: "center",
-            alignItems: "center",
-            shadowColor: "black",
-            shadowOpacity: 0.26,
-            shadowOffset: { width: 0, height: 2 },
-            shadowRadius: 10,
-            elevation: 3,
-          }}
-          onPress={() => navigation.navigate("Orçamento")}
-        >
-          <Octicons name="plus" size={20} color="#fff" />
-        </TouchableOpacity>
-      </View>
-    </View>
+    </>
   );
 }

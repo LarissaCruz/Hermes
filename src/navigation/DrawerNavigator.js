@@ -5,12 +5,12 @@ import {
   DrawerItemList,
 } from "@react-navigation/drawer";
 import Cliente from "../pages/Cliente";
-import Home from "../pages/Home";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { Entypo, FontAwesome5 } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Title, Paragraph } from "react-native-paper";
 import { MaterialIcons } from "@expo/vector-icons";
+import TabViewPedido from "./TabViewPedido";
 
 const Drawer = createDrawerNavigator();
 const CustomDrawer = (props) => {
@@ -59,7 +59,7 @@ export default function DrawerNavigator(props) {
     >
       <Drawer.Screen
         name="Pedido"
-        component={Home}
+        component={TabViewPedido}
         options={{
           headerRight: () => (
             <View style={{ marginRight: 20 }}>

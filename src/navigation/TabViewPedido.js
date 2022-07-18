@@ -1,10 +1,8 @@
 import * as React from "react";
 import { View, useWindowDimensions, Text } from "react-native";
 import { TabView, TabBar, SceneMap } from "react-native-tab-view";
-import Home from "../pages/Home";
-import Cliente from "../pages/Cliente";
-import FirstRoute from "../pages/TabView/FirstRoute";
-import SecondRoute from "../pages/TabView/SecondRoute";
+import FirstRoute from "../pages/Pedido/FirstRoute";
+import SecondRoute from "../pages/Pedido/SecondRoute";
 import { Badge } from "react-native-paper";
 
 export default function TabViewPedido({ navigation }) {
