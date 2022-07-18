@@ -68,7 +68,7 @@ export default function CardProduto() {
           }}
         >
           <Button
-            styles={{
+            stylesButton={{
               paddingHorizontal: 15,
               paddingVertical: 10,
               borderRadius: 0,
@@ -80,7 +80,7 @@ export default function CardProduto() {
             <AntDesign name="minus" size={24} color="#fff" />
           </Button>
           <Button
-            styles={{
+            stylesButton={{
               paddingHorizontal: 15,
               paddingVertical: 10,
               borderRadius: 0,

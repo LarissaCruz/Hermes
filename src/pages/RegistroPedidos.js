@@ -26,7 +26,7 @@ export default function RegistroPedidos({ navigation }) {
           label={"DEFINIR DESCONTO E ACRÉCIMOS"}
           textStyle={{ color: "#9999" }}
           onPress={() => navigation.navigate("Catálogo")}
-          styles={{
+          stylesButton={{
             backgroundColor: "#fff",
             borderColor: "#9999",
             borderWidth: 1,
