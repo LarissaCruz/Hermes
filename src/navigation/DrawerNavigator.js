@@ -5,7 +5,7 @@ import {
   DrawerItemList,
 } from "@react-navigation/drawer";
 import Cliente from "../pages/Cliente";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Entypo, FontAwesome5 } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Title, Paragraph } from "react-native-paper";
@@ -16,30 +16,13 @@ const Drawer = createDrawerNavigator();
 const CustomDrawer = (props) => {
   return (
     <DrawerContentScrollView
-      contentContainerStyle={{
-        paddingTop: 0,
-      }}
+      contentContainerStyle={styles.containerDrawer}
       {...props}
     >
-      <View
-        style={{
-          margin: 0,
-          paddingTop: 20,
-          paddingBottom: 10,
-          paddingHorizontal: 10,
-          justifyContent: "flex-end",
-          backgroundColor: "#42A4E5",
-        }}
-      >
-        <Title style={{ color: "#fff" }}>Larissa</Title>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Paragraph style={{ color: "#fff" }}>CCM</Paragraph>
+      <View style={styles.containerHeader}>
+        <Title style={styles.title}>Larissa</Title>
+        <View style={styles.containerIcon}>
+          <Paragraph style={styles.title}>CCM</Paragraph>
           <MaterialIcons name="arrow-drop-down" size={24} color="#fff" />
         </View>
       </View>
@@ -61,7 +44,7 @@ export default function DrawerNavigator(props) {
         component={TabViewPedido}
         options={{
           headerRight: () => (
-            <View style={{ marginRight: 20 }}>
+            <View style={styles.navBarIcon}>
               <TouchableOpacity>
                 <Entypo name="magnifying-glass" size={24} color="black" />
               </TouchableOpacity>
@@ -105,3 +88,28 @@ export default function DrawerNavigator(props) {
     </Drawer.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  containerHeader: {
+    margin: 0,
+    paddingTop: 20,
+    paddingBottom: 10,
+    paddingHorizontal: 10,
+    justifyContent: "flex-end",
+    backgroundColor: "#42A4E5",
+  },
+  containerIcon: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  title: {
+    color: "#fff",
+  },
+  containerDrawer: {
+    paddingTop: 0,
+  },
+  navBarIcon: {
+    marginRight: 20,
+  },
+});
