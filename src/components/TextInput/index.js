@@ -2,6 +2,7 @@ import * as React from "react";
 import { TouchableOpacity, View, Text, TextInput } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { styles } from "./styles";
 
 export default function Input({
   type,
@@ -17,14 +18,7 @@ export default function Input({
       <TextInput
         onChangeText={onChangeValue}
         value={value}
-        style={{
-          minHeight: 40,
-          marginBottom: 10,
-          borderBottomWidth: 1,
-          borderColor: "#9999",
-          paddingVertical: 10,
-          fontSize: 16,
-        }}
+        style={styles.input}
         keyboardType={type}
         placeholder={placeholder}
         multiline={multiline}

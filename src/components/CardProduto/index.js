@@ -2,92 +2,40 @@ import * as React from "react";
 import { View, Text, Image } from "react-native";
 import Button from "../Button";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { styles } from "./styles";
 
 export default function CardProduto() {
   return (
-    <View style={{ backgroundColor: "#fff", margin: 10, borderRadius: 5 }}>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
+    <View style={styles.card}>
+      <View style={styles.containerCard}>
+        <View style={styles.containerDescription}>
           <Image
-            style={{ height: 100, width: 100, borderTopLeftRadius: 5 }}
+            style={styles.image}
             source={require("../../../assets/produto.png")}
           />
           <Text>Arroz Pacote 1kg exemplo</Text>
         </View>
 
-        <Text
-          style={{
-            fontSize: 25,
-            fontWeight: "bold",
-            marginRight: 10,
-            textAlign: "center",
-            minWidth: "30%",
-          }}
-        >
-          0
-        </Text>
+        <Text style={styles.label}>0</Text>
       </View>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          backgroundColor: "#F9FBFA",
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            width: "68%",
-            justifyContent: "flex-end",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ fontSize: 16, color: "#454746", fontWeight: "bold" }}>
-            R$ 2,21
-          </Text>
+      <View style={styles.container}>
+        <View style={styles.containerPreco}>
+          <Text style={styles.labelPreco}>R$ 2,21</Text>
           <MaterialIcons name="monetization-on" size={16} color="#23D084" />
         </View>
 
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
+        <View style={styles.containerButton}>
           <Button
-            stylesButton={{
-              paddingHorizontal: 15,
-              paddingVertical: 10,
-              borderRadius: 0,
-              backgroundColor: "#97A9B7",
-              marginRight: 2,
-              marginTop: 0,
-            }}
+            stylesButton={[
+              styles.button,
+              {
+                backgroundColor: "#97A9B7",
+              },
+            ]}
           >
             <AntDesign name="minus" size={24} color="#fff" />
           </Button>
-          <Button
-            stylesButton={{
-              paddingHorizontal: 15,
-              paddingVertical: 10,
-              borderRadius: 0,
-              marginRight: 0,
-              marginTop: 0,
-            }}
-          >
+          <Button stylesButton={styles.button}>
             <AntDesign name="plus" size={24} color="#fff" />
           </Button>
         </View>
