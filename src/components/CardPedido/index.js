@@ -1,8 +1,8 @@
 import * as React from "react";
-import { TouchableOpacity, View, Text } from "react-native";
+import { View } from "react-native";
 import { FontAwesome5, FontAwesome, Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Divider, Card, Title, Paragraph } from "react-native-paper";
+import { Card, Title, Paragraph } from "react-native-paper";
 import { styles } from "./styles";
 
 export default function CardPedido({}) {

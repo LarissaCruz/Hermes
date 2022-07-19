@@ -15,7 +15,6 @@ export default function TabViewPedido({ navigation }) {
   ]);
 
   const renderScene = ({ route }) => {
-    console.log("ttttttt22", navigation);
     switch (route.key) {
       case "first":
         return <FirstRoute navigation={navigation} />;

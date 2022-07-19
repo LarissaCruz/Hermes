@@ -1,5 +1,11 @@
 import * as React from "react";
-import { ScrollView, View, Text, TouchableOpacity } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import TextInput from "../components/TextInput";
 import { FontAwesome5 } from "@expo/vector-icons";
 import ButtonNavigation from "../components/Button/ButtonNavigation";
@@ -9,7 +15,7 @@ import Chip from "../components/Chip";
 
 export default function RegistroPedidos({ navigation }) {
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: "#EFEEF3" }}>
+    <ScrollView style={styles.container}>
       <ContainerSection>
         <Chip />
         <ButtonNavigation label={"Selecione o cliente"}>
@@ -26,12 +32,7 @@ export default function RegistroPedidos({ navigation }) {
           label={"DEFINIR DESCONTO E ACRÉCIMOS"}
           textStyle={{ color: "#9999" }}
           onPress={() => navigation.navigate("Catálogo")}
-          stylesButton={{
-            backgroundColor: "#fff",
-            borderColor: "#9999",
-            borderWidth: 1,
-            marginBottom: 20,
-          }}
+          stylesButton={styles.button}
         />
       </ContainerSection>
       <ContainerSection title={"Detalhes"}>
@@ -74,29 +75,38 @@ export default function RegistroPedidos({ navigation }) {
           numberOfLines={3}
         />
       </ContainerSection>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          marginBottom: 20,
-        }}
-      >
+      <View style={styles.containerButton}>
         <TouchableOpacity style={{ padding: 20 }}>
-          <Text
-            style={{ textAlign: "center", fontWeight: "bold", color: "#9999" }}
-          >
-            ENVIAR EMAIL{" "}
-          </Text>
+          <Text style={styles.label}>ENVIAR EMAIL</Text>
         </TouchableOpacity>
         <TouchableOpacity style={{ padding: 20 }}>
-          <Text
-            style={{ textAlign: "center", fontWeight: "bold", color: "#9999" }}
-          >
-            GERAR PEDIDO
-          </Text>
+          <Text style={styles.label}>GERAR PEDIDO</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#EFEEF3",
+  },
+  button: {
+    backgroundColor: "#fff",
+    borderColor: "#9999",
+    borderWidth: 1,
+    marginBottom: 20,
+  },
+  containerButton: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  label: {
+    textAlign: "center",
+    fontWeight: "bold",
+    color: "#9999",
+  },
+});

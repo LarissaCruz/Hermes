@@ -1,7 +1,5 @@
 import * as React from "react";
-import { TouchableOpacity, View, Text, TextInput } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Text, TextInput } from "react-native";
 import { styles } from "./styles";
 
 export default function Input({

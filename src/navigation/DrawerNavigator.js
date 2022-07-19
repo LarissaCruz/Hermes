@@ -48,7 +48,6 @@ const CustomDrawer = (props) => {
   );
 };
 export default function DrawerNavigator(props) {
-  console.log("props", props);
   return (
     <Drawer.Navigator
       useLegacyImplementation
