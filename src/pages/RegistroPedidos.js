@@ -18,7 +18,7 @@ export default function RegistroPedidos({ navigation }) {
     <ScrollView style={styles.container}>
       <ContainerSection>
         <Chip />
-        <ButtonNavigation label={"Selecione o cliente"}>
+        <ButtonNavigation label={"Selecione o cliente"} OnPress={()=>navigation.navigate('Cliente')}>
           <FontAwesome5 name="store-alt" size={18} color="black" />
         </ButtonNavigation>
         <ButtonNavigation label={"Selecione o cliente"}>
