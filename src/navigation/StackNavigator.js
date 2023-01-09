@@ -5,6 +5,8 @@ import DrawerNavigator from "./DrawerNavigator";
 import { TouchableOpacity, View, Text } from "react-native";
 import { Fontisto } from "@expo/vector-icons";
 import Catalogo from "../pages/Catalogo";
+import RegistroCliente from "../pages/RegistroCliente";
+import RegistroFornecedor from "../pages/RegistroFornecedor";
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +46,38 @@ export default function StackNavigator() {
               </TouchableOpacity>
               <TouchableOpacity>
                 <Fontisto name="more-v-a" size={18} color="#999" />
+              </TouchableOpacity>
+            </View>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="Novo Cliente"
+        component={RegistroCliente}
+        options={{
+          headerStyle: {
+            backgroundColor: "#FAFAFA",
+          },
+          headerRight: () => (
+            <View style={{  flexDirection: "row" }}>
+              <TouchableOpacity >
+                <Text style={{ fontWeight: "bold", fontSize: 14 }}>SALVAR</Text>
+              </TouchableOpacity>
+            </View>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="Novo Fornecedor"
+        component={RegistroFornecedor}
+        options={{
+          headerStyle: {
+            backgroundColor: "#FAFAFA",
+          },
+          headerRight: () => (
+            <View style={{  flexDirection: "row" }}>
+              <TouchableOpacity >
+                <Text style={{ fontWeight: "bold", fontSize: 14 }}>SALVAR</Text>
               </TouchableOpacity>
             </View>
           ),

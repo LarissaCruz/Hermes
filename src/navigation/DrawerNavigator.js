@@ -6,11 +6,13 @@ import {
 } from "@react-navigation/drawer";
 import Cliente from "../pages/Cliente";
 import { View, StyleSheet } from "react-native";
-import { Entypo, FontAwesome5 } from "@expo/vector-icons";
+
+import { Entypo, FontAwesome5,FontAwesome  } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Title, Paragraph } from "react-native-paper";
 import { MaterialIcons } from "@expo/vector-icons";
 import TabViewPedido from "./TabViewPedido";
+import Fornecedor from "../pages/Fornecedor";
 
 const Drawer = createDrawerNavigator();
 const CustomDrawer = (props) => {
@@ -67,6 +69,19 @@ export default function DrawerNavigator(props) {
             <FontAwesome5
               name="home"
               size={20}
+              color={focused ? "black" : "#888888"}
+            />
+          ),
+        }}
+      />
+       <Drawer.Screen
+        name="Fornecedor"
+        component={Fornecedor}
+        options={{
+          drawerIcon: ({ focused, size }) => (
+            <FontAwesome
+              name="building-o"
+              size={24}
               color={focused ? "black" : "#888888"}
             />
           ),
