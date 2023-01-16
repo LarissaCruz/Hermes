@@ -4,7 +4,7 @@ export function criarTabela() {
     db.transaction((transaction) => {
         transaction.executeSql("CREATE TABLE IF NOT EXISTS "+
             "clientes " + 
-            "(id INTERGER PRIMARY KEY AUTOINCREMENT, nomeFantasia TEXT, razaoSocial TEXT, tipo TEXT, cnpj TEXT, sulframa TEXT, IEstadual TEXT, email TEXT, telefone TEXT, bairro TEXT, cidade TEXT, complemento TEXT, endereco TEXT, numero TEXT, uf TEXT , info TEXT);")
+            "(id INTEGER PRIMARY KEY AUTOINCREMENT, nomeFantasia TEXT, razaoSocial TEXT, tipo TEXT, cnpj TEXT, sulframa TEXT, IEstadual TEXT, email TEXT, telefone TEXT, bairro TEXT, cidade TEXT, complemento TEXT, endereco TEXT, numero TEXT, uf TEXT , info TEXT); ")
     })
 }
 export async function adicionarCliente(data) {
@@ -28,4 +28,11 @@ export async function buscarCliente(data) {
         })
     })
     
+}
+
+
+export function deletarTabela() {
+    db.transaction((transaction) => {
+        transaction.executeSql("DROP TABLE clientes;")
+    })
 }

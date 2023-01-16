@@ -5,8 +5,26 @@ import { Octicons } from "@expo/vector-icons";
 import CardPedido from "../../components/CardPedido";
 import HeaderPedido from "../../components/HeaderPedido";
 import ButtonIcon from "../../components/Button/ButtonIcon";
+import { useFocusEffect } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import BottomSheet from "../../components/BottomSheet";
+import BottomSheett from "../../components/BottomSheet";
+
 
 export default function FirstRoute({ navigation }) {
+  removeValue = async () => {
+    try {
+      await AsyncStorage.removeItem('cliente')
+      await AsyncStorage.removeItem('fornecedor')
+    } catch(e) {
+      // remove error
+    }
+  }
+  useFocusEffect(
+    React.useCallback(() => {
+       removeValue();
+    }, [])
+  )
   return (
     <View style={styles.container}>
       <HeaderPedido />

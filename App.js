@@ -2,10 +2,12 @@ import { SafeAreaView, StyleSheet, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import StackNavigator from "./src/navigation/StackNavigator";
 import { useEffect } from "react";
-import { criarTabela } from "./src/service/storageSQLite/clientes";
+import { criarTabela, deletarTabela } from "./src/service/SQLite/clientes";
+import { criarTabelaFornecedor } from "./src/service/SQLite/fornecedor";
 
 export default function App() {
   useEffect(()=>{
+    criarTabelaFornecedor();
     criarTabela();
   },[])
 

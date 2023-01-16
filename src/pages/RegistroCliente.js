@@ -10,10 +10,10 @@ import Label from "../components/Label";
 import TextInput from "../components/TextInput";
 import { useForm} from "react-hook-form";
 import {criarUsuario} from "../service/requisicoes/clientes"
-import { adicionarCliente } from "../service/storageSQLite/clientes";
+import { adicionarCliente } from "../service/SQLite/clientes";
 
 export default function RegistroCliente({ navigation }) {
-  const { control, handleSubmit, formState: { errors } } = useForm();
+   const { control, handleSubmit, formState: { errors } } = useForm();
    const [TipoClientValue, setTipoClientValue] = React.useState(null);
    const [TipoClient, setTipoClient] = React.useState([
         { label: "Pessoa Juridica", value: "Pessoa Juridica" },
@@ -63,14 +63,16 @@ export default function RegistroCliente({ navigation }) {
     //  else{
     //     console.log(response);
     //  }
-    await adicionarCliente(data)
+    console.log("Data", data)
+    const response = await adicionarCliente(data)
+    console.log("response2",response)
     }
 
   return (
     <ScrollView style={styles.container}>
       <ContainerSection>
         <Dropdown
-          name="Tipo"
+          name="tipo"
           control={control}
           setOpen={setOpen}
           Open={Open}
@@ -82,7 +84,7 @@ export default function RegistroCliente({ navigation }) {
         />
         <TextInput
           control={control}
-          name={"CNPJ"}
+          name={"cnpj"}
           type={"default"}
           placeholder={"CNPJ"}
         />
@@ -95,13 +97,13 @@ export default function RegistroCliente({ navigation }) {
     
         <TextInput
           control={control}
-          name={"RazãoSocial"}
+          name={"razaoSocial"}
           type={"default"}
           placeholder={"Razão Social"}
         />
         <TextInput
           control={control}
-          name={"NomeFantasia"}
+          name={"nomeFantasia"}
           type={"default"}
           placeholder={"Nome Fantasia"}
         />
@@ -113,7 +115,7 @@ export default function RegistroCliente({ navigation }) {
         />
         <TextInput 
           control={control}
-          name={"Sulframa"}
+          name={"sulframa"}
           type={"default"} 
           placeholder={"Sulframa"} 
         />
@@ -133,37 +135,37 @@ export default function RegistroCliente({ navigation }) {
         />
         <TextInput
           control={control}
-          name={"Endereco"}
+          name={"endereco"}
           type={"default"}
           placeholder={"Endereço"}
         />
           <TextInput
             control={control}
-            name={"Numero"}
+            name={"numero"}
             type={"default"}
             placeholder={"Numero"}
         />
           <TextInput
             control={control}
-            name={"Complemento"}
+            name={"complemento"}
             type={"default"}
             placeholder={"Complemento"}
         />
         <TextInput
           control={control}
-          name={"Bairro"}
+          name={"bairro"}
           type={"default"}
           placeholder={"Bairro"}
         />
         <TextInput
           control={control}
-          name={"Cidade"}
+          name={"cidade"}
           type={"default"}
           placeholder={"Cidade"}
         />
         <Label text={"Estado"}/>
         <Dropdown
-          name="UF"
+          name="uf"
           control={control}
           data={UFClient}
           setOpen={setOpenUF}

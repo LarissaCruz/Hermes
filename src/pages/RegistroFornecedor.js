@@ -8,8 +8,11 @@ import ContainerSection from "../components/ContainerSection";
 import Dropdown from "../components/Dropdown";
 import Label from "../components/Label";
 import TextInput from "../components/TextInput";
+import { useForm} from "react-hook-form";
+import { adicionarFornecedor } from "../service/SQLite/fornecedor";
 
 export default function RegistroFornecedor({ navigation }) {
+   const { control, handleSubmit, formState: { errors } } = useForm();
    const [TipoClientValue, setTipoClientValue] = React.useState(null);
    const [TipoClient, setTipoClient] = React.useState([
         { label: "Pessoa Juridica", value: "Pessoa Juridica" },
@@ -47,11 +50,31 @@ export default function RegistroFornecedor({ navigation }) {
         { label: "DF", value: "DF" },
         
     ]);
+    
+    const [Open, setOpen] = React.useState(false);
+    const [OpenUF, setOpenUF] = React.useState(false);
+
+    const onSubmit = async (data) => {
+      //  const response= await criarUsuario(data)
+      //  if(response == "sucesso"){
+      //    console.log(data);
+      //  }
+      //  else{
+      //     console.log(response);
+      //  }
+      console.log("Data", data)
+      const response = await adicionarFornecedor(data)
+      console.log("response2",response)
+    }
+
   return (
     <ScrollView style={styles.container}>
-      
       <ContainerSection>
         <Dropdown
+          name="tipo"
+          control={control}
+          setOpen={setOpen}
+          Open={Open}
           data={TipoClient}
           value={TipoClientValue} 
           setValue={setTipoClientValue} 
@@ -59,6 +82,8 @@ export default function RegistroFornecedor({ navigation }) {
           placeholder={'Pessoa Juridica'}
         />
         <TextInput
+          control={control}
+          name={"cnpj"}
           type={"default"}
           placeholder={"CNPJ"}
         />
@@ -70,66 +95,99 @@ export default function RegistroFornecedor({ navigation }) {
         />
     
         <TextInput
+          control={control}
+          name={"razaoSocial"}
           type={"default"}
           placeholder={"Razão Social"}
         />
         <TextInput
+          control={control}
+          name={"nomeFantasia"}
           type={"default"}
           placeholder={"Nome Fantasia"}
         />
         <TextInput
+          control={control}
+          name={"IEstadual"}
           type={"default"}
           placeholder={"Inscrição Estadual"}
         />
         <TextInput 
+          control={control}
+          name={"sulframa"}
           type={"default"} 
           placeholder={"Sulframa"} 
         />
+      
+      
         <TextInput 
+          control={control}
+          name={"email"}
           type={"default"} 
           placeholder={"Novo email"} 
         />
         <TextInput
+          control={control}
+          name={"telefone"}
           type={"default"}
           placeholder={"Novo telefone"}
         />
         <TextInput
+          control={control}
+          name={"endereco"}
           type={"default"}
           placeholder={"Endereço"}
         />
           <TextInput
-          type={"default"}
-          placeholder={"Numero"}
+            control={control}
+            name={"numero"}
+            type={"default"}
+            placeholder={"Numero"}
         />
           <TextInput
-          type={"default"}
-          placeholder={"Complemento"}
+            control={control}
+            name={"complemento"}
+            type={"default"}
+            placeholder={"Complemento"}
         />
         <TextInput
+          control={control}
+          name={"bairro"}
           type={"default"}
           placeholder={"Bairro"}
         />
         <TextInput
+          control={control}
+          name={"cidade"}
           type={"default"}
           placeholder={"Cidade"}
         />
         <Label text={"Estado"}/>
         <Dropdown
+          name="uf"
+          control={control}
           data={UFClient}
+          setOpen={setOpenUF}
+          Open={OpenUF}
           value={UFClientValue} 
           setValue={setUFClientValue} 
           setItems={setUFClient} 
           placeholder={'UF'}
         />
-        <Label text={"Informações Adicionais"}/>
+       
         <TextInput
+          control={control}
+          name={"info"}
           type={"default"}
-          label={""}
+          label={"Informações Adicionais"}
           placeholder={""}
           multiline={true}
           numberOfLines={3}
         />
-       
+       <Button
+          label={"Salvar"}
+          onPress={handleSubmit(onSubmit)}
+        />
       </ContainerSection>
     </ScrollView>
   );

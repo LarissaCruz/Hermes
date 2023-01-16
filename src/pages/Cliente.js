@@ -1,35 +1,29 @@
-import React, {useEffect, useState} from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, {useEffect, useState, useCallback} from "react";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import { Octicons } from "@expo/vector-icons";
 import ButtonIcon from "../components/Button/ButtonIcon";
 import api from "../service/api";
 import { buscaUsuario } from "../service/requisicoes/clientes";
-import { buscarCliente } from "../service/storageSQLite/clientes";
+import { buscarCliente } from "../service/SQLite/clientes";
+import { useFocusEffect } from '@react-navigation/native';
+import CardUsuario from "../components/CardUsuario";
 
-export default function Cliente({navigation}) {
-  const [data, setData] = useState([])
-  async function busca(){
-   //const response = await buscaUsuario()
-   //if(response){
-    //setData(response)
-   //}else{
-    //console.log("erro")
-   //}
+export default function Cliente({route, navigation}) {
+  const [data, setData] = useState()
+  const buscar = async () => {
    const response = await buscarCliente()
-   console.log("response", response)
+   setData(response)
   }
-  useEffect(()=>{
-    busca();
-  },[])
-
+  
+   useFocusEffect(
+    useCallback(() => {
+       buscar();
+    }, [])
+  )
   return(
     <View style={styles.container}>
-      <View style={styles.card}>
-        <Text style={styles.title}>Supermercado do Bairro </Text>
-        <Text style={styles.endereco}>São Paulo</Text>
-        <Text style={styles.endereco}>Comercio de Genero Alimenticio LTDA</Text>
-      </View>
-     <View style={styles.containerButton}>
+      <CardUsuario data={data} params={route?.params}  navigation={navigation}/>
+      <View style={styles.containerButton}>
         <ButtonIcon
           onPress={() => navigation.navigate("Novo Cliente")}
         >
